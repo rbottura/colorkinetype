@@ -1,6 +1,6 @@
 # colorkinetype  
 
- Ensemble de projets pour faire bouger des lettres texturés.
+ Ensemble de projets pour faire bouger des lettres texturés. Il y a plus de détail pour chaque application dans leur dossier respectif.
 
 ### Description des 4 dossiers dans l'ordre de leur utilité.
 
@@ -24,10 +24,10 @@ Ce dossier utilise à la fois **P5.js** et **Matter.js** pour le rendu graphique
 
 - ### openType  
 
-<img src="image.png">
+<img src="./thumbnails/opentype.png">
 Le projet de ce dossier correspond à 2 jours de travail avec Vincent Maillard, pour faire fonctionner la librairie **opentype.js** et les ressources dont nous disposons, c'est à dire les tableaux de coordonnées de points.
 
 # Compiler 
 
 ! ATTENTION !
-Pas compiler au sens informatique du terme mais compiler dans le sens que les dossiers dotFont_gen, opencvjs et render_matter peuvent exister en une seule application
+Pas compiler au sens informatique du terme mais compiler dans le sens que les dossiers dotFont_gen, opencvjs et render_matter peuvent exister en une seule application.
