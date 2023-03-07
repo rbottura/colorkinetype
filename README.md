@@ -5,20 +5,20 @@
 ### Description des 4 dossiers dans l'ordre de leur utilité.
 
 - ### dotFont_gen :
-<img src="./thumbnails/dotfont_gen.png" width="70%">
+<img src="./thumbnails/dotfont_gen.png" width="100%">
 
 Dotted Font Generator est un programme écrit avec la librairie **P5.js** qui permets de sauvegarder des fichiers images de glyphes noires grillagés par des lignes blanches.
 
 - ### opencvjs  
 
-<img src="./thumbnails/opencv.png" width="80%">
+<img src="./thumbnails/opencv.png" width="100%">
 
 **OpenCV.js** est une librairie javascript dérivé de la librairie python **OpenCV**. Ce dossier renferme une petite app web qui permets de selectionner dans notre ordinateur un ou plusieurs fichiers images (de préférence obtenus par dotFont_gen) et de sortir une array à 3 dimensions \[**glyphe**][**points**][**coordonnée x ou y**].
   
 
 - ### render_matter
 
-<img src="./thumbnails/render_matter.png" width="80%">  
+<img src="./thumbnails/render_matter.png" width="100%">  
 
 Ce dossier utilise à la fois **P5.js** et **Matter.js** pour le rendu graphique. Une fois les lettres décomposés en un lot de points dans un espace 2D, nous pouvons créer des particules avec textures et des comportements physiques grâce à matter.js et enregistrer des séquences grâce au plugin P5 : **P5.capture**.
 
