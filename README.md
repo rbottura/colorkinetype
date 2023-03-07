@@ -4,7 +4,10 @@
 
 ### Description des 4 dossiers
 
-**alpha_rendering**
-**opencvjs**
-**openType**
-**dotFont_gen**
+**rendering**  
+
+**opencvjs**  
+
+**openType**  
+
+**dotFont_gen**  
