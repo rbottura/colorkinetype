@@ -1,0 +1,9 @@
+body{
+    margin: 0;
+    /* overflow: hidden; */
+}
+
+@font-face{
+    font-family: reprogAlphabet;
+    src: url('../fonts/Re-Alphabet-Medium.otf');
+}

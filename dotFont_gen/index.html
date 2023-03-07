@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sketch</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head>
+
+<div id="overlay">
+
+</div>
+
+<body>
+
+  <div id="images_folder">
+    <div id="tools">
+      <div class="tool_btn" id="load_gpe_btn">LOAD BATCH</div>
+      <div class="tool_btn" id="erase_btn">ERASE</div>
+      <div class="tool_btn" id="save_gpe_btn">SAVE BATCH</div>
+      <!-- <div class="tool_btn" id="erase_btn"></div> -->
+    </div>
+    <p>Saving area : </p>
+    <div id="img_saved_wrapper"></div>
+
+  </div>
+
+  <div id="app_settings">
+    <div id="controls_settings">
+      <div class="ctrl_stg_btn">FPS</div>
+      <div class="ctrl_stg_btn">loop / no Loop</div>
+      <div class="ctrl_stg_btn">glyph index</div>
+    </div>
+
+    <div id="font_settings">
+      <div class="font_stg_btn">font family
+        <label for="avatar">Choose a font file :</label>
+        <input type="file" id="font-select" name="font" accept=".otf, .ttf">
+      </div>
+      <div class="font_stg_btn">font size </div>
+      <div class="font_stg_btn">font offset X/Y</div>
+
+    </div>
+
+    <div id="grid_settings">
+      <div class="grid_stg_btn">grid size </div>
+      <div class="grid_stg_btn">grid colors </div>
+      <div class="grid_stg_btn">grid rotation </div>
+      <div class="grid_stg_btn">grid offset X/Y </div>
+    </div>
+
+
+  </div>
+
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/p5.capture@1.4.0/dist/p5.capture.umd.min.js"></script> -->
+  <script src="./controls.js"></script>
+  <script src="./sketch.js"></script>
+</body>
+
+</html>
