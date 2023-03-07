@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Reprogrammer Alphabet</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/p5.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5.capture@1.4.0/dist/p5.capture.umd.min.js"></script>
+</head>
+
+<body>
+
+    <div id="htmlInterface" class="drag">
+        <div id="css-box-handle" class="handle">move</div>
+        <style id="styleHtml" contenteditable style="display: block; white-space: pre;">
+            canvas {
+                filter: blur(0px) saturate(.4) contrast(2) hue-rotate(0deg);
+            }
+        </style>
+    </div>
+
+    <div id="zoneInterface" onmouseenter="fireInterfaceDisplay()">
+    </div>
+
+    <div id="interface" class="drag">
+        <div class="itemInterface firstItem">
+            <button id="btnHide" onclick="hideInterface()">Toggle Display Interface</button>
+        </div>
+        <div class="itemInterface">UTILISER LES FLECHES HAUT/BAS POUR CHANGER DE GLYPHS</div>
+        <div class="itemInterface">
+            <div id="lightModeDiv" class="subItem">
+                Dark mode : <input type="checkbox" id="checkLight" onclick="setLightMode()">
+                & Reload auto : <input type="checkbox" id="checkReload" checked>
+            </div>
+        </div>
+
+        <div class="itemInterface">
+            <p class="titleItem">Datasets : </p>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set1" name="sets" value="0" checked>
+                <label for="set1">data set 1 (Alphabet)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set2" name="sets" value="1">
+                <label for="set2">data set 2 (Raleway dots)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set3" name="sets" value="2">
+                <label for="set3">data set 3 (default P5)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set4" name="sets" value="3">
+                <label for="set4">data set 4 (egyptienne Large)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set5" name="sets" value="4">
+                <label for="set5">data set 5 (Garamond Italic)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set6" name="sets" value="5">
+                <label for="set5">data set 6 (PeaceSans)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set7" name="sets" value="6">
+                <label for="set5">data set 7 (Pilow)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set8" name="sets" value="7">
+                <label for="set5">data set 8 (Typefesse)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set9" name="sets" value="8">
+                <label for="set5">data set 9 (Mainz)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set10" name="sets" value="9">
+                <label for="set5">data set 10 (phrase)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set11" name="sets" value="10">
+                <label for="sets">data set 11 (article)</label>
+            </div>
+            <div class="subItem">
+                <input class="radioSets" type="radio" id="set12" name="sets" value="11">
+                <label for="sets">data set 12 (Amdal)</label>
+            </div>
+        </div>
+        <div class="itemInterface">
+            <p class="titleItem">Particules : </p>
+            <div id="showBalls" class="subItem">
+                voir motif : <input type="checkbox" id="checkParticles" onclick="showBalls()" checked>
+            </div>
+            <div id="ballFill" class="subItem">
+                <div id="ballTexture">
+                    <span id="textureSelection">Motif selection : </span><br>
+                    <div id="spritesLib">
+                        <img src="./sprites/sprite(1).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(2).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(3).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(4).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(5).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(6).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(7).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(8).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(9).png" alt="" class="spriteItem activeSprite">
+                        <img src="./sprites/sprite(10).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(11).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(12).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(13).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(14).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(15).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(16).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(17).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(18).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(19).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(20).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(21).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(22).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(23).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(24).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(25).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(26).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(27).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(28).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(29).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(30).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(31).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(32).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(33).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(34).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(35).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(36).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(37).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(38).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(39).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(40).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(41).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(42).png" alt="" class="spriteItem">
+                        <img src="./sprites/sprite(43).png" alt="" class="spriteItem">
+                    </div>
+                </div>
+
+                <div id="spriteSize" class="subItem">
+                    <label for="particleSize">Taille du Motif : </label>
+                    <input type="range" id="particleSize" name="particleSize" min="0.01" max="1" step="0.01"
+                        onmouseup="scaleParticle()">
+                </div>
+                Use colors > <input type="checkbox" id="checkFill" onclick="particleFill()">
+                <br>
+                <div id="ballColor">
+                    <label for="particlesColor"> - Particle color > </label>
+                    <input type="color" id="particlesColor" name="particlesColor" value="#e66465" onclick="loadColor()">
+                </div>
+            </div>
+            <div id="ballFriction" class="subItem">
+                <label for="airFric">friction de l'air : </label>
+                <input type="range" id="airFric" name="airFric" min="0.01" max="1" step="0.02"
+                    onmouseup="changeAirFriction()">
+            </div>
+            <div id="ballMasse" class="subItem">
+                <label for="circRadius">Particle radius : </label>
+                <input type="range" id="circRadius" name="circRadius" min="3" max="20" step="1"
+                    onmouseup="changeRadius()">
+            </div>
+            <div id="ballDensity" class="subItem">
+                <label for="density">Densité de particule : </label>
+                <input type="range" id="density" name="density" min="0.005" max="0.2" step="0.005"
+                    onmouseup="changeDensity()">
+            </div>
+        </div>
+        <div class="itemInterface">
+            <p class="titleItem">Liens : </p>
+            <div class="subItem" id="showConst">
+                voir le lien : <input type="checkbox" id="checkConstrains" onclick="showConstrains()" checked>
+            </div>
+            <div class="subItem" id="strokeStyle">
+                <label for="constrainStyle">Couleur du lien : ></label>
+                <input type="color" id="constrainStyle" name="constrainStyle" value="#e66465"
+                    onclick="constrainStyle()">
+            </div>
+            <div class="subItem" id="strokeWidth">
+                <label for="constStrokeWidth">Épaisseur du trait : </label>
+                <input type="range" id="constStrokeWidth" name="constStrokeWidth" min="0.1" max="2" step="0.1"
+                    onmouseup="constrainStyle()">
+            </div>
+            <div class="subItem" id="constLengthItem">
+                <label for="constLength">Taille du lien : </label>
+                <input type="range" id="constLength" name="constLength" min="1" max="200" step="4"
+                    onmouseup="constrainLength()">
+            </div>
+            <div class="subItem" id="stiffness">
+                <label for="constStifness">Élasticité : </label>
+                <input type="range" id="constStifness" name="constStifness" min="0.005" max="1" step="0.005"
+                    onmouseup="changeStiffness()">
+            </div>
+            <!-- <div class="subItem" id="anchors">
+                Show anchors : <input type="checkbox" id="checkAnchors" onclick="showAnchors()">
+            </div> -->
+        </div>
+
+        <div class="itemInterface">
+            <p class="titleItem">Reload settings</p>
+            <div class="subItem">
+                Your settings made for the past letter have disappeared ? Reload them !
+                <button id="btnReload" onclick="fullReload()">RELOAD</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="interface_automate">
+        <p>Animation mode : </p>
+        <div class="input_anim_select"><input type="radio" class="inputs_anim_btns" id="" name="anim_mod" value="1"
+                checked> <label for="anim_mod">Cercle</label></div>
+        <div class="input_anim_select"><input type="radio" class="inputs_anim_btns" id="" name="anim_mod" value="2">
+            <label for="anim_mod">Sinueux</label></div>
+        <div class="input_anim_select"><input type="radio" class="inputs_anim_btns" id="" name="anim_mod" value="3">
+            <label for="anim_mod">Carré</label></div>
+        <div class="input_anim_select"><input type="radio" class="inputs_anim_btns" id="" name="anim_mod" value="4">
+            <label for="anim_mod">Curseur</label></div>
+    </div>
+
+    <!-- <canvas id="canvas"></canvas> -->
+
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <script src="./node_modules/matter-js/build/matter.js"></script>
+    <script src="./node_modules/matter-attractors/build/matter-attractors.js"></script>
+    <script src="./js/setup_cnv.js"></script>
+    <!-- <script id="mainScript" src="./js/script.js"></script> -->
+    <!-- <script src="./js/classes.js"></script> -->
+
+</body>
+
+</html>
