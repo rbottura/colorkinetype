@@ -1,3 +1,7 @@
+
+Une grosse partie du script suivant a été produit par ChatGPT.
+
+```js
 let images = [];
 
 function onOpenCvReady() {
@@ -17,7 +21,8 @@ function onOpenCvReady() {
         }
     }, false);
 }
-
+```
+```js
 let jsondata = [];
 
 function processImages() {
@@ -81,7 +86,6 @@ function processImages() {
         }));
     }
 
-    // console.log(data)
     // Wait for all promises to resolve before writing the output to a file
     Promise.all(promises).then((e) => {
         console.log(e)
@@ -91,3 +95,10 @@ function processImages() {
     })
 
 }
+```
+
+Il fonctionne de l'excacte même manière que le script en python décris dans l'article "Reprogrammer : lettre S".
+
+Cette application de gère que du frontend pour le moment, mais il serait biensûr intéressant d'obtenir un backend pour y stocker des sets de données.
+
+A suivre.
