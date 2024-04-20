@@ -1,5 +1,5 @@
-let WiW = window.innerWidth, WiH = window.innerHeight;
-let canvasW = 400, canvasH = 400;
+const WiW = window.innerWidth, WiH = window.innerHeight;
+const canvasW = WiH, canvasH = WiH;
 
 class Grid {
   constructor(width, r, g, b) {
@@ -10,8 +10,8 @@ class Grid {
     this.g = g;
     this.b = b;
 
-    this.gridH = WiW;
-    this.gridW = WiW;
+    this.gridH = canvasH;
+    this.gridW = canvasW;
 
     this.grid = WiH;
 
@@ -64,40 +64,43 @@ class Grid2 {
   }
   show() {
     //rows 
+    push();
     for (let i = 0; i < this.nbrLinesH; i++) {
-      line(0, i * (this.sizeY + this.spaceY), this.gridH, i * (this.sizeY + this.spaceY));
+      line(0, -5 + i * (this.sizeY + this.spaceY), this.gridH, i * (this.sizeY + this.spaceY));
       stroke(this.colorY);
       strokeWeight(this.sizeY);
     }
 
     //cols
     for (let i = 0; i < this.nbrLinesW; i++) {
-      line(i * (this.sizeX + this.spaceX), 0, i * (this.sizeX + this.spaceX), this.gridW);
+      line(i * (this.sizeX + this.spaceX), 0, + i * (this.sizeX + this.spaceX), this.gridW);
       stroke(this.colorX)
       strokeWeight(this.sizeX);
     }
+    pop();
   }
 }
+
+const charLimit = 78;
 
 class Texte {
   constructor() {
     this.content = "";
-    this.size = 260;
-    this.height = this.size + 50;
+    this.size = 550;
+    this.height = this.size - 0;
 
-    for (let i = 11568; i < 11568+30; i++) {
+    for (let i = 45; i < 45 + charLimit; i++) {
       this.content += String.fromCharCode(i);
     }
     this.arrTxt = this.content.split('');
   }
   show(glyph) {
-    textSize(this.size + this.size / 4)
+    push()
+    textSize(this.size)
+    textAlign(CENTER)
     fill(0);
     noStroke();
-    push()
-    translate(150, 10)
-    textAlign(CENTER, BASELINE)
-    text(this.arrTxt[glyph], this.size / 6, this.height)
+    text(this.arrTxt[glyph], canvasW / 2 , this.height + 0 )
     pop()
   }
 }
@@ -108,6 +111,7 @@ let Amdal;
 function preload() {
   Img1 = loadImage('./ps1.png')
   Amdal = loadFont('./font/AMDAL-Regular.otf');
+  RalewayDots = loadFont('./font/RalewayDots-Regular.ttf');
   EgyptienneL = loadFont('./font/EgyptienneLarge-Regular.otf');
   GaramondI = loadFont('./font/Garamond-Italic.ttf');
   PeaceSans = loadFont('./font/Peace_sans.otf');
@@ -115,6 +119,11 @@ function preload() {
   Pilow = loadFont('./font/Pilowlava-Regular.otf');
   Typefesse = loadFont('./font/Typefesse_Claire-Obscure.otf');
   Mainz = loadFont('./font/Mainz.otf');
+
+  CGaram = loadFont('./font/CormorantGaramond-Bold.otf')
+  Destra = loadFont('./font/destra.otf')
+  LibreBaskerville = loadFont('./font/LibreBaskerville-Bold.ttf')
+  MinipaxR = loadFont('./font/Minipax-Regular.otf')
 }
 
 let colorB, grid2, txt1, grid1, colorA;
@@ -124,36 +133,36 @@ let cnv, savingImgs = false;
 
 function setup() {
   cnv = createCanvas(canvasW, canvasH);
-  textFont(Amdal);
-  // colorA = color("rgba(255,120,0,0.5)")
-  // colorB = color("rgba(0,120,255,0.5)")
+  textFont(MinipaxR);
+
   colorA = color("white")
   colorB = color("white")
 
-  let size = 7;
-  let space = 4;
+  let size = 8;
+  let space = 5;
+  
   grid2 = new Grid2(size, space, size, space, colorA, colorB);
   txt1 = new Texte();
 }
 
 let loopIndex = 0;
-let FPS = 2; 
+let FPS = 3; 
 
 function draw() {
   // blendMode(BLEND)
   background(255, 255, 255, 255);
   frameRate(FPS)
-
+  
   // image(Img1, 0, 0)
-
-  if (globalGlyphIndex >= 30) {
+  
+  if (globalGlyphIndex >= charLimit) {
     globalGlyphIndex = 0;
     savingImgs = false;
-    FPS = 1.5;
+    FPS = 3;
   }
-
+  
   txt1.show(globalGlyphIndex);
-  // console.log(frameCount)
+  
   push()
   // translate(150, -250)
   // rotate(PI / 4);
@@ -212,6 +221,7 @@ save_gpe_btn.addEventListener("click", () => saveBatch())
 
 
 let letterImgs = document.querySelectorAll("img");
+
 function saveBatch() {
   letterImgs = document.querySelectorAll("img");
   console.log(letterImgs)
@@ -229,7 +239,7 @@ function saveBatch() {
     var a = document.createElement('a');
     console.log(image)
     a.href = image.src
-    a.download = image.src
+    a.download = i
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

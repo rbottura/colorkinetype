@@ -2,19 +2,38 @@ html, body {
   margin: 0;
   padding: 0;
 }
+  
+@font-face {
+  
+  font-family: Minipax;
+  src: url(./font/Minipax-Regular.otf);
+  
+  font-family: LibreBaskerville;
+  src: url(./font/LibreBaskerville-Bold.ttf);
+  
+  font-family: Destra;
+  src: url(./font/destra.otf);
+
+  font-family: Barlow;
+  src: url(./font/Barlow-Regular.otf);
+  
+  font-family: CormorantGaram;
+  src: url(./font/CormorantGaramond-Bold.otf);
+}
 
 canvas {
   display: block;
   position: absolute;
-  top: calc(35vh - 200px);
-  left: calc(50vw - 200px);
-  border: black 3px solid;
+  left: 25vw;
+  border: rgb(244, 139, 139) 3px solid;
+  box-sizing: border-box;
   /* box-shadow: 0px 0px 50px 1px rgba(70, 70, 70, 0.514); */
 }
 
 #images_folder{
   display: block;
   position: absolute;
+  z-index: 500;
   top: 66vh;
   margin: 0px 25px;
   border: orangered solid 1px;

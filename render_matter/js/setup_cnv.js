@@ -65,11 +65,6 @@ function setup() {
 }
 
 function draw() {
-    // background(color('white'))
-    // blendMode(ADD)
-    //if (frameCount % 21 == 0) {
-    //    background('rgb(' + random() * 255 + ', 50,50)')
-    //}
 }
 
 document.addEventListener("click", (e) => {
